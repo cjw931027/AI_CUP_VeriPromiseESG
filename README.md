@@ -1,8 +1,7 @@
 # AI CUP 2026 — VeriPromiseESG 永續承諾驗證競賽
 
-繁體中文 ESG 永續報告書段落的四任務分類系統。本倉庫為可重現之實作程式碼,供主辦單位查核得獎正當性。
 
-**最終成績(Private Leaderboard):加權分數 0.6434421,Rank 11 / 143。**
+**TEAM_10289 最終成績(Private Leaderboard):加權分數 0.6434421,Rank 11 / 143。**
 
 | 子任務 | 權重 | macro-F1 |
 |--------|------|----------|
@@ -43,7 +42,21 @@ pip install -r requirements.txt
 
 ## 資料
 
-本倉庫**不含**官方競賽資料(著作權考量)。重現前請至 AIdea 平台下載 `train_2000.json` 與 `vpesg4k_test_2000.json`,放入 `reproduce_champion.py` 最上方 `DRIVE` 常數所指的資料夾(與權重、`adjust_champion.json` 同處)。系統僅使用主辦單位提供之官方標註資料,**未引入任何外部標註資料**。
+本倉庫**不含**官方競賽資料(著作權考量)。系統僅使用主辦單位提供之官方標註資料,**未引入任何外部標註資料**。重現需要兩個資料檔:
+
+- **`vpesg4k_test_2000.json`**:官方競賽測試集,自 AIdea 平台下載。
+- **`train_2000.json`**:**本隊由官方 `vpesg_4k_train_1000.json` 與 `vpesg4k_val_1000.json` 合併而成(共 2,000 筆,兩者 id 無重疊)**。下載官方 train / val 後執行下列即可生成:
+  ```python
+  import json
+  a = json.load(open("vpesg_4k_train_1000.json", encoding="utf-8"))
+  b = json.load(open("vpesg4k_val_1000.json",    encoding="utf-8"))
+  json.dump(a + b, open("train_2000.json", "w", encoding="utf-8"), ensure_ascii=False)
+  ```
+
+> ⚠️ 官方資料具著作權,**不重新散布**(不在本倉庫、亦不在下方權重 Drive 內)。請評審自 AIdea 平台
+> 取得官方檔案後,將 `vpesg4k_test_2000.json` 與(依上式合併出的)`train_2000.json` 放入
+> `reproduce_champion.py` 最上方 `DRIVE` 常數所指的資料夾,與下載的權重、`adjust_champion.json` 同處,再執行。
+> （此合併為確定性串接,評審重建之 `train_2000.json` 與本隊所用者內容一致。)
 
 ---
 
@@ -82,10 +95,11 @@ pip install -r requirements.txt
 
 ### 訓練權重(20 個 `.pt`)
 
-權重檔總量過大(遠超 GitHub 單檔 100MB 上限),存放於 Google Drive(連同 `adjust_champion.json`、
-官方資料,構成可直接執行 `reproduce_champion.py` 的完整封裝):
+權重檔總量過大(遠超 GitHub 單檔 100MB 上限),存放於 Google Drive。**該資料夾僅含 20 個權重與
+`adjust_champion.json`,不含官方資料**(著作權考量)。重現時請把這些權重下載到你的工作資料夾,
+再依上節「資料」自 AIdea 補上官方資料,即可執行 `reproduce_champion.py`:
 
-> **下載連結（Google Drive,知道連結者可檢視）:**
+> **權重下載連結（Google Drive,知道連結者可檢視）:**
 > https://drive.google.com/drive/folders/1zB5SGvRuUnvfUHTMpmHQfTM8XC4Vgnhd?usp=sharing
 
 ---
