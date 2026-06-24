@@ -1,0 +1,1 @@
+{"taus": {"promise_status": 0.75, "verification_timeline": 0.0, "evidence_status": 0.25, "evidence_quality": 0.25}, "priors": {"promise_status": [0.8135, 0.1865], "verification_timeline": [0.359, 0.017, 0.249, 0.1885, 0.1865], "evidence_status": [0.6725, 0.141, 0.1865], "evidence_quality": [0.559, 0.1125, 0.001, 0.3275]}}

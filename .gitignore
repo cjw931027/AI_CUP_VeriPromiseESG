@@ -1,0 +1,21 @@
+# 訓練權重(放 Google Drive)
+*.pt
+*.npz
+weights/
+
+# 書面報告(循官方信件管道另交)
+*.docx
+*.doc
+*.pdf
+
+# Colab 路徑殘留
+/content/
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# 系統
+.DS_Store
+.vscode/
