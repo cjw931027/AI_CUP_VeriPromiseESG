@@ -6,7 +6,9 @@ ESG 永續承諾驗證競賽 2026 — 冠軍配置「完整重訓 + 重現」驅
 用途：競賽交件用。只給 train_2000.json，從零重跑出冠軍 submission：
       訓練 4 組 backbone × 5 折 → ensemble OOF → logit 校正 → 年份規則 → 5 欄輸出 → 驗證。
 
-LB 紀錄：weighted_score = 0.6129
+Private LB（官方排行榜）：weighted_score = 0.6434421 / Rank 11 / 143
+        （排行榜僅回傳此單一加權總分；下列各任務分數為本地 OOF，非排行榜細項）
+本地 OOF 各任務（官方口徑；依公司分組之 5 折，較保守故略低於線上，本地加權 ≈ 0.6129）：
         promise 0.795 / timeline 0.5889 / status 0.6997 / quality 0.4447
 
 【執行前提】
